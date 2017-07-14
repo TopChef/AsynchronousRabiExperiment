@@ -16,6 +16,7 @@ notifications:
 install:
   - cd $TRAVIS_BUILD_DIR
   - pip install -r requirements.txt
+  - pip install . 
 
 script:
   - nosetests ./tests/unit --with-coverage # Run unit tests
