@@ -1,26 +1,29 @@
 """
 Contains unit tests for :mod:`code`
 """
-import unittest
-from asynchronous_rabi_experiment.code import add_one
+from unittest import TestCase
+from asynchronous_rabi_experiment.code import Flippable
 
-class TestAddOne(unittest.TestCase):
+class TestFlip(TestCase):
     """
-    Tests that adding one to a number successfully returns the
+    Tests that flipping a state successfully returns the
     expected result
     """
     def setUp(self):
         """
         Provide some test variables
         """
-        self.number_to_add = 1
-        self.expected_result = 2
+        self.flippable_thing = Flippable(Flippable.STATE_1)
+        self.expected_result = Flippable.STATE_2
 
-    def test_add_one(self):
+    def test_flip(self):
         """
-        Tests that the function correctly adds one to
-        the number to add.
+        Tests that the function correctly flips the state
         """
-        result = add_one(self.number_to_add)
-        self.assertEqual(self.expected_result, result) 
+        self.flippable_thing.flip()
+        self.assertEqual(self.expected_result, self.flippable_thing.state) 
 
+    def test_flippable_initialization(self):
+        a = Flippable.STATE_1
+        b = Flippable(Flippable.STATE_1)
+        self.assertNotEqual(a, b)
