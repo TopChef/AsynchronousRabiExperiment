@@ -27,3 +27,4 @@ class TestFlip(TestCase):
         a = Flippable.STATE_1
         b = Flippable(Flippable.STATE_1)
         self.assertNotEqual(a, b)
+        
